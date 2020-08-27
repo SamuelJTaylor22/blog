@@ -1,16 +1,16 @@
-import { generateId } from "../utils.js"
-
+import { generateId } from "../utils.js";
 
 export default class Post {
-    constructor({title, content, comments = []}) {
-        this.title = title
-        this.content = content
-        this.comments = comments
-        this.id = generateId()
-    }
+  constructor({ title, content, comments = [] }) {
+    this.title = title;
+    this.content = content;
+    this.comments = comments;
+    this.id = generateId();
+  }
 
-    get Template() {
-        return `                <div class="card my-3" style="width: 18rem;">
+  get Template() {
+    return `    <div class="col-md-4">            
+    <div class="card my-3" style="width: 18rem;">
         <div class="card-body ">
           <h5 class="card-title">${this.title}</h5>
           <p class="card-text">${this.content}</p>
@@ -26,16 +26,19 @@ export default class Post {
           <input type="text" name="comment" id="comment" class="form-control" placeholder="New comment">
           <button type="submit" class="btn btn-primary">Submit</button>
       </div>
-  </form>`
-    }
+  </form>
+  </div>`;
+  }
 
-    get CommentsTemplate(){
-        let template = ''
-        this.comments.forEach(c => template += `
+  get CommentsTemplate() {
+    let template = "";
+    this.comments.forEach(
+      (c) =>
+        (template += `
         <p>${c} <i class="fas fa-trash" onclick="app.postsController.deleteComment('${this.id}', '${c}')"></i></p>
         
         `)
-        return template
-    }
-
+    );
+    return template;
+  }
 }
