@@ -1,4 +1,13 @@
 import { generateId } from "../utils.js";
+function dateFunction() {
+  let today = new Date();
+  let dd = String(today.getDate());
+  let mm = String(today.getMonth() + 1); //January is 0!
+  let yyyy = today.getFullYear();
+
+  let day = mm + "/" + dd + "/" + yyyy;
+  return day;
+}
 
 export default class Post {
   constructor({ title, content, comments = [] }) {
@@ -6,6 +15,7 @@ export default class Post {
     this.content = content;
     this.comments = comments;
     this.id = generateId();
+    this.date = dateFunction();
   }
 
   get Template() {
@@ -13,6 +23,7 @@ export default class Post {
     <div class="card my-3" style="width: 18rem;">
         <div class="card-body ">
           <h5 class="card-title">${this.title}</h5>
+          <p class="card-subtitle text-muted">${this.date}</p>
           <p class="card-text">${this.content}</p>
           <button type="button" class="btn btn-danger" onclick="app.postsController.deletePost('${this.id}')">Delete</button>
         </div>
