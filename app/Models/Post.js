@@ -19,9 +19,9 @@ export default class Post {
   }
 
   get Template() {
-    return `    <div class="col-md-4">            
-    <div class="card my-3" style="width: 18rem;">
-        <div class="card-body ">
+    return `    <div class="col-md-4 my-2">            
+    <div class="card my-3 shadow rounded" style="width: 18rem;">
+        <div class="card-body">
           <h5 class="card-title">${this.title}</h5>
           <p class="card-subtitle text-muted">${this.date}</p>
           <p class="card-text">${this.content}</p>
@@ -33,9 +33,9 @@ export default class Post {
       <h6>Delete all <i class="fas fa-dumpster-fire" onclick="app.postsController.deleteAllComments('${this.id}')"></i>  
       </div>
       <form class="form-inline" onsubmit="app.postsController.newComment('${this.id}')">
-      <div class="form-group">
+      <div class="form-group rounded shadow">
           <input type="text" name="comment" id="comment" class="form-control" placeholder="New comment">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-comments" aria-hidden="true"></i> Submit</button>
       </div>
   </form>
   </div>`;
