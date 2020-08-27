@@ -19,7 +19,8 @@ export default class Post {
       </div>
       <div>
       ${this.CommentsTemplate}
-        </div>
+      <h6>Delete all <i class="fas fa-dumpster-fire" onclick="app.postsController.deleteAllComments('${this.id}')"></i>  
+      </div>
       <form class="form-inline" onsubmit="app.postsController.newComment('${this.id}')">
       <div class="form-group">
           <input type="text" name="comment" id="comment" class="form-control" placeholder="New comment">
